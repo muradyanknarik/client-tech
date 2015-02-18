@@ -10,15 +10,17 @@ div{margin:0 0 20px;padding:20px;border:5px solid #ffc;}
 p{margin:10px 0;background:#fff;padding:10px;}
 </style>
 <script type="text/javascript">
-	function f() {
-		
+	function f(p) {
+        var c = p.cloneNode(true);
+        p.parentNode.appendChild(p);        
+		console.log(p.parentNode.getElementsByTagName('b'));
 	}
 </script>
 </head>
 <body>
 <div id="d">
 	<p>Первый параграф</p>
-	<p id="clickable"><a href="javascript:f();">Второй <b>кликабельный</b> параграф</a></p>
+	<p onclick="f(this)" id="clickable">Before<a href="#">Второй <b>кликабельный</b> параграф</a>After</p>
 	<p>Третий параграф</p>
 </div>
 <div>

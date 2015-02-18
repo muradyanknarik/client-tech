@@ -12,11 +12,40 @@ var row = 10;
 
 function createDOM() {
 	/* Создайте в элементе div таблицу с помощью методов DOM */
+        var ul = document.getElementsByTagName("ul")[0]; // assuming it exists
+        var docfrag = document.createDocumentFragment();
+        var browserList = ["Internet Explorer", "Mozilla Firefox", "Safari", "Chrome", "Opera"];
+
+        browserList.forEach(function(e) {
+          var li = document.createElement("li");
+          li.textContent = e;
+          docfrag.appendChild(li);
+        });
+
+        ul.appendChild(docfrag);
 }
+
 </script>
 </head>
 <body>
+    
+<a id="x">Событие</a><br>
 <a href="javascript:createDOM();">Создать таблицу с помощью методов DOM</a><br>
-<div id="d"></div>
+<div id="d"><ul></ul></div>
+<script>
+    var a = document.getElementById('x');
+    console.log(a);
+    try{
+        a.addEventListener('click', f, false);    
+    }catch(e){    
+        a.attachEvent('onclick', f);
+    }
+
+    function f(e){
+        var e = e || window.event;
+        console.log(e);
+        alert(e);
+    }
+</script>
 </body>
 </html>

@@ -16,11 +16,27 @@
 	5. Кроссбраузерно добавьте созданный элемент в начало или конец списка
 */
 	function addYear(flag){
-	
+            var mySel = document.forms[0].elements['year'];                        
+            if(flag){
+                var curYear = + mySel.options[mySel.length - 1].value + 1;
+                var o = new Option(curYear, curYear, false, true);
+                mySel.add(o);                
+            }else{
+                var curYear = mySel.options[0].value - 1;
+                var o = new Option(curYear, curYear, false, true);
+                try{
+                    mySel.add(o, mySel.options[0]);
+                }catch(e){
+                    mySel.add(o, 0);
+                }
+            }
+            console.log(typeof mySel.options[0].value);
+            console.log(mySel.options);
 	}
 </script>
 </head>
 <body>
+<div style="width:100%; height: 85px;">    
 <form action="">
 	<fieldset>
 		<legend>Изменение элементов списка</legend>
@@ -41,5 +57,18 @@
 		</div>
 	</fieldset>
 </form>
+</div>
+<hr>
+<div>
+    <span>Опишите функцию addYear(), которая принимает аргумент:<br/>
+            flag - число, указывающее на место добавления нового элемента option:<br/>
+                    0 - в начало списка<br/>
+                    1 - в конец списка<br/>
+    1. Найдите форму<br/>
+    2. Определитесь, куда добавлять элемент: в конец, или в начало списка<br/>
+    3. Определите value последнего элемента списка и увеличьте или уменьшите его на 1<br/>
+    4. Создайте новый элемент списка<br/>
+    5. Кроссбраузерно добавьте созданный элемент в начало или конец списка</span>
+</div>
 </body>
 </html>
